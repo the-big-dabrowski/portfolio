@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio för Rashed Dabrowski – frontend och UX.">
+    <meta name="description" content="Rashed Dabrowski – frontend och UX. Här samlar jag mina projekt.">
     <meta name="color-scheme" content="light dark">
     <title>Rashed Dabrowski – Portfolio</title>
-    <link rel="icon" href="resources/hllogo.svg" type="image/svg+xml">
+    <link rel="icon" href="resources/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body class="page page--home">
@@ -15,14 +15,14 @@
     <header class="site-header">
         <div class="site-header__inner container">
             <a class="logo site-header__logo" href="index.html" aria-label="Rashed Dabrowski – till startsidan">
-                <img class="logo__image" src="resources/hllogo.svg" alt="" width="1138" height="704">
+                <span class="logo__mark" aria-hidden="true">RD</span>
                 <span class="logo__text">Rashed Dabrowski</span>
             </a>
 
             <nav class="nav site-header__nav" aria-label="Huvudmeny">
                 <ul class="nav__list">
-                    <li class="nav__item"><a class="nav__link nav__link--active" href="index.html" aria-current="page">Start</a></li>
                     <li class="nav__item"><a class="nav__link" href="#projekt">Projekt</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#om-mig">Om mig</a></li>
                     <li class="nav__item"><a class="nav__link" href="#kontakt">Kontakt</a></li>
                 </ul>
             </nav>
@@ -33,10 +33,10 @@
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero__inner container">
                 <p class="hero__eyebrow">Frontend &amp; UX</p>
-                <h1 class="hero__title" id="hero-title">Portfolio</h1>
-                <p class="hero__lead">Den här sidan är en portfolio som visar mina kunskaper i frontend och UX.</p>
+                <h1 class="hero__title" id="hero-title">Hej, jag heter Rashed.</h1>
+                <p class="hero__lead">Jag bygger webbplatser med fokus på struktur, tillgänglighet och genomtänkt design. Här samlar jag mina projekt.</p>
                 <div class="hero__actions">
-                    <a class="button button--primary" href="#projekt">Se mina projekt</a>
+                    <a class="button button--primary" href="#projekt">Se projekten</a>
                     <a class="button button--secondary" href="#kontakt">Kontakta mig</a>
                 </div>
             </div>
@@ -46,51 +46,68 @@
             <div class="container">
                 <header class="section__header">
                     <h2 class="section__title" id="projekt-title">Projekt</h2>
-                    <p class="section__lead">Ett urval av saker jag har byggt och designat.</p>
+                    <p class="section__lead">Ett urval av det jag har byggt.</p>
                 </header>
 
-                <ul class="grid grid--cards" role="list">
+                <ul class="grid grid--projects" role="list">
                     <li class="grid__item">
-                        <article class="card card--green">
-                            <h3 class="card__title">Projekt ett</h3>
-                            <p class="card__text">Kort beskrivning av projektet, vilket problem det löser och vilken teknik som använts.</p>
-                            <a class="card__link" href="#">Läs mer <span class="u-visually-hidden">om projekt ett</span></a>
+                        <article class="project-card">
+                            <div class="project-card__media">
+                                <img class="project-card__image" src="resources/projects/hisslaget.svg" alt="" width="1138" height="704">
+                            </div>
+                            <div class="project-card__body">
+                                <h3 class="project-card__title">Hissläget</h3>
+                                <p class="project-card__text">Webbplats byggd med semantisk HTML, Sass enligt 7-1 och BEM, och ett designsystem som synkas med Figma.</p>
+                                <ul class="project-card__tags" role="list" aria-label="Tekniker">
+                                    <li class="tag">HTML</li>
+                                    <li class="tag">Sass</li>
+                                    <li class="tag">Figma</li>
+                                </ul>
+                                <!-- TODO: länka till Hissläget när projektet har en egen adress -->
+                                <a class="project-card__link" href="#">Se projektet <span class="u-visually-hidden">Hissläget</span></a>
+                            </div>
                         </article>
                     </li>
                     <li class="grid__item">
-                        <article class="card card--blue">
-                            <h3 class="card__title">Projekt två</h3>
-                            <p class="card__text">Kort beskrivning av projektet, vilket problem det löser och vilken teknik som använts.</p>
-                            <a class="card__link" href="#">Läs mer <span class="u-visually-hidden">om projekt två</span></a>
-                        </article>
-                    </li>
-                    <li class="grid__item">
-                        <article class="card card--red">
-                            <h3 class="card__title">Projekt tre</h3>
-                            <p class="card__text">Kort beskrivning av projektet, vilket problem det löser och vilken teknik som använts.</p>
-                            <a class="card__link" href="#">Läs mer <span class="u-visually-hidden">om projekt tre</span></a>
-                        </article>
+                        <div class="project-card project-card--placeholder">
+                            <p class="project-card__placeholder">Fler projekt på väg</p>
+                        </div>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <section class="section section--alt" id="kontakt" aria-labelledby="kontakt-title">
+        <section class="section section--alt" id="om-mig" aria-labelledby="om-mig-title">
+            <div class="container about">
+                <h2 class="section__title about__title" id="om-mig-title">Om mig</h2>
+                <div class="about__body">
+                    <!-- TODO: skriv din egen text -->
+                    <p>Skriv några rader om dig själv här: vem du är, vad du gillar att bygga och vad du letar efter.</p>
+                    <p>Berätta gärna vilka verktyg du jobbar med och vad du lär dig just nu.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="kontakt" aria-labelledby="kontakt-title">
             <div class="container">
                 <header class="section__header">
                     <h2 class="section__title" id="kontakt-title">Kontakt</h2>
                     <p class="section__lead">Vill du jobba tillsammans eller bara säga hej? Hör av dig.</p>
                 </header>
-                <a class="button button--primary" href="mailto:din.epost@example.com">Skicka e-post</a>
+                <div class="contact__actions">
+                    <a class="button button--primary" href="mailto:din.epost@example.com">Skicka e-post</a>
+                    <a class="button button--secondary" href="https://github.com/the-big-dabrowski">GitHub</a>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="site-footer">
         <div class="site-footer__inner container">
-            <address class="site-footer__contact">
-                <a class="site-footer__link" href="mailto:din.epost@example.com">din.epost@example.com</a>
-            </address>
+            <ul class="site-footer__links" role="list">
+                <li><a class="site-footer__link" href="mailto:din.epost@example.com">din.epost@example.com</a></li>
+                <li><a class="site-footer__link" href="https://github.com/the-big-dabrowski">GitHub</a></li>
+            </ul>
             <p class="site-footer__copy"><small>&copy; 2026 Rashed Dabrowski</small></p>
         </div>
     </footer>

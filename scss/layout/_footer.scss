@@ -7,14 +7,7 @@
   background-color: palette('neutral', 900);
   color: palette('neutral', 200);
   padding-block: space(6);
-  border-top: 4px solid transparent;
-  border-image: linear-gradient(
-      90deg,
-      var(--color-accent-green) 0 33.33%,
-      var(--color-accent-red) 33.33% 66.66%,
-      var(--color-accent-blue) 66.66% 100%
-    )
-    1;
+  border-top: 4px solid var(--color-accent);
 
   &__inner {
     display: flex;
@@ -28,11 +21,17 @@
     }
   }
 
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2) space(5);
+  }
+
   &__link {
     color: palette('neutral', 0);
 
     @include hover {
-      color: palette('blue', 300);
+      color: palette('brand', 300);
     }
   }
 

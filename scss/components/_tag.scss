@@ -1,0 +1,14 @@
+// =============================================================================
+// Tag – liten etikett, t.ex. teknik i ett projekt
+// =============================================================================
+@use '../abstracts' as *;
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: space(1) space(3);
+  border-radius: radius('pill');
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-text);
+  @include text-style('label-tag');
+}

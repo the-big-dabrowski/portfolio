@@ -2,73 +2,34 @@
   "$meta": {
     "fileKey": "OyHcWR2OqbFhKriD3fOpIv",
     "fileName": "Document",
-    "exportedAt": "2026-11-06T10:50:49.610Z"
+    "prefix": "Portfolio",
+    "exportedAt": "2026-11-06T19:39:36.861Z"
   },
   "color": {
-    "green": {
+    "brand": {
+      "50": {
+        "$type": "color",
+        "$value": "#f5f5ff"
+      },
       "100": {
         "$type": "color",
-        "$value": "#e6f7ed"
+        "$value": "#e8e7fe"
       },
       "300": {
         "$type": "color",
-        "$value": "#4dd185"
+        "$value": "#a5a1f7"
       },
       "500": {
         "$type": "color",
-        "$value": "#01b34f"
+        "$value": "#4f46e5"
       },
       "700": {
         "$type": "color",
-        "$value": "#00803a"
+        "$value": "#3a32b8"
       },
       "900": {
         "$type": "color",
-        "$value": "#00451f"
-      }
-    },
-    "blue": {
-      "100": {
-        "$type": "color",
-        "$value": "#e6f1fd"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#5aa6f5"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#0173ea"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#0057b3"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#002f61"
-      }
-    },
-    "red": {
-      "100": {
-        "$type": "color",
-        "$value": "#fee7e9"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#fb6b78"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#f81227"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#c4071a"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#6b030e"
+        "$value": "#1f1a66"
       }
     },
     "neutral": {
@@ -232,11 +193,11 @@
       },
       "primary": {
         "$type": "color",
-        "$value": "{color.blue.500}"
+        "$value": "{color.brand.500}"
       },
       "primary-hover": {
         "$type": "color",
-        "$value": "{color.blue.700}"
+        "$value": "{color.brand.700}"
       },
       "primary-contrast": {
         "$type": "color",
@@ -244,39 +205,27 @@
       },
       "link": {
         "$type": "color",
-        "$value": "{color.blue.700}"
+        "$value": "{color.brand.700}"
       },
       "link-hover": {
         "$type": "color",
-        "$value": "{color.blue.900}"
+        "$value": "{color.brand.900}"
       },
       "focus": {
         "$type": "color",
-        "$value": "{color.blue.500}"
+        "$value": "{color.brand.500}"
       },
-      "accent-green": {
+      "accent": {
         "$type": "color",
-        "$value": "{color.green.500}"
+        "$value": "{color.brand.500}"
       },
-      "accent-blue": {
+      "accent-text": {
         "$type": "color",
-        "$value": "{color.blue.500}"
+        "$value": "{color.brand.700}"
       },
-      "accent-red": {
+      "accent-soft": {
         "$type": "color",
-        "$value": "{color.red.500}"
-      },
-      "accent-green-text": {
-        "$type": "color",
-        "$value": "{color.green.700}"
-      },
-      "accent-blue-text": {
-        "$type": "color",
-        "$value": "{color.blue.700}"
-      },
-      "accent-red-text": {
-        "$type": "color",
-        "$value": "{color.red.700}"
+        "$value": "{color.brand.100}"
       }
     },
     "dark": {
@@ -310,11 +259,11 @@
       },
       "primary": {
         "$type": "color",
-        "$value": "{color.blue.300}"
+        "$value": "{color.brand.300}"
       },
       "primary-hover": {
         "$type": "color",
-        "$value": "{color.blue.100}"
+        "$value": "{color.brand.100}"
       },
       "primary-contrast": {
         "$type": "color",
@@ -322,39 +271,27 @@
       },
       "link": {
         "$type": "color",
-        "$value": "{color.blue.300}"
+        "$value": "{color.brand.300}"
       },
       "link-hover": {
         "$type": "color",
-        "$value": "{color.blue.100}"
+        "$value": "{color.brand.100}"
       },
       "focus": {
         "$type": "color",
-        "$value": "{color.blue.300}"
+        "$value": "{color.brand.300}"
       },
-      "accent-green": {
+      "accent": {
         "$type": "color",
-        "$value": "{color.green.500}"
+        "$value": "{color.brand.300}"
       },
-      "accent-blue": {
+      "accent-text": {
         "$type": "color",
-        "$value": "{color.blue.500}"
+        "$value": "{color.brand.300}"
       },
-      "accent-red": {
+      "accent-soft": {
         "$type": "color",
-        "$value": "{color.red.500}"
-      },
-      "accent-green-text": {
-        "$type": "color",
-        "$value": "{color.green.300}"
-      },
-      "accent-blue-text": {
-        "$type": "color",
-        "$value": "{color.blue.300}"
-      },
-      "accent-red-text": {
-        "$type": "color",
-        "$value": "{color.red.300}"
+        "$value": "{color.brand.900}"
       }
     }
   },
@@ -365,8 +302,8 @@
         "$value": {
           "fontFamily": "SF Pro",
           "fontWeight": 700,
-          "fontSize": 36,
-          "lineHeight": 1.15,
+          "fontSize": 40,
+          "lineHeight": 1.1,
           "letterSpacing": 0,
           "textCase": "none"
         }
@@ -376,8 +313,8 @@
         "$value": {
           "fontFamily": "SF Pro",
           "fontWeight": 700,
-          "fontSize": 60,
-          "lineHeight": 1.15,
+          "fontSize": 64,
+          "lineHeight": 1.1,
           "letterSpacing": 0,
           "textCase": "none"
         }
@@ -618,6 +555,54 @@
           "fontWeight": 700,
           "fontSize": 18,
           "lineHeight": 1.6,
+          "letterSpacing": 0,
+          "textCase": "none"
+        }
+      }
+    },
+    "label-monogram": {
+      "mobile": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "SF Pro",
+          "fontWeight": 700,
+          "fontSize": 16,
+          "lineHeight": 1,
+          "letterSpacing": 0,
+          "textCase": "none"
+        }
+      },
+      "desktop": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "SF Pro",
+          "fontWeight": 700,
+          "fontSize": 18,
+          "lineHeight": 1,
+          "letterSpacing": 0,
+          "textCase": "none"
+        }
+      }
+    },
+    "label-tag": {
+      "mobile": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "SF Pro",
+          "fontWeight": 500,
+          "fontSize": 13,
+          "lineHeight": 1.4,
+          "letterSpacing": 0,
+          "textCase": "none"
+        }
+      },
+      "desktop": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "SF Pro",
+          "fontWeight": 500,
+          "fontSize": 14,
+          "lineHeight": 1.4,
           "letterSpacing": 0,
           "textCase": "none"
         }

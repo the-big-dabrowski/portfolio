@@ -2,8 +2,11 @@
 // Exporterar variabler, textstilar och skuggstilar från Figma-filen till JSON.
 // Används av pluginet (code.js) och kan köras direkt via Figma MCP (use_figma).
 // Formatet följer W3C Design Tokens ($type/$value) med alias som "{color.neutral.0}".
+//
+// prefix: läser bara samlingar som heter "<prefix> …" och stilar som heter
+// "<prefix>/…", och tar bort prefixet. Flera projekt kan då dela en Figma-fil.
 // =============================================================================
-async function exportTokens() {
+async function exportTokens({ prefix = null } = {}) {
   const WEIGHTS = {
     Thin: 100, Ultralight: 200, 'Extra Light': 200, Light: 300, Regular: 400,
     Medium: 500, Semibold: 600, 'Semi Bold': 600, Bold: 700, Heavy: 800,
@@ -23,14 +26,22 @@ async function exportTokens() {
   try { fileKey = figma.fileKey ?? null; } catch (e) { /* bara för privata plugins */ }
 
   const tokens = {
-    $meta: { fileKey, fileName: figma.root.name, exportedAt: new Date().toISOString() },
+    $meta: { fileKey, fileName: figma.root.name, prefix, exportedAt: new Date().toISOString() },
     color: {}, space: {}, radius: {}, layout: {}, theme: {}, typography: {}, shadow: {},
   };
 
+  const ownCollection = (name) => !prefix || name.startsWith(`${prefix} `);
+  const stripCollection = (name) => (prefix ? name.slice(prefix.length + 1) : name);
+  // Returnerar stilnamnet utan prefix, eller null om stilen hör till något annat.
+  const ownStyle = (name) => (!prefix ? name : name.startsWith(`${prefix}/`) ? name.slice(prefix.length + 1) : null);
+
   // --- Variabler ---------------------------------------------------------------
-  const collections = await figma.variables.getLocalVariableCollectionsAsync();
+  const allCollections = await figma.variables.getLocalVariableCollectionsAsync();
+  const collections = allCollections.filter((c) => ownCollection(c.name));
+  if (!collections.length) throw new Error(`Hittar inga variabelsamlingar${prefix ? ` som börjar med "${prefix} "` : ''}.`);
   const vars = {};
-  for (const c of collections) {
+  // Alla samlingar läses in så att alias till andra samlingar kan lösas upp.
+  for (const c of allCollections) {
     for (const id of c.variableIds) vars[id] = await figma.variables.getVariableByIdAsync(id);
   }
   const toValue = (v, raw) => {
@@ -44,10 +55,11 @@ async function exportTokens() {
   const typeOf = (v) => (v.resolvedType === 'COLOR' ? 'color' : v.resolvedType === 'FLOAT' ? 'dimension' : 'string');
 
   for (const c of collections) {
-    const isTheme = /^theme/i.test(c.name);
+    const name = stripCollection(c.name);
+    const isTheme = /^theme/i.test(name);
     for (const mode of c.modes) {
       // "Theme Light" (1 läge) → theme.light, "Theme" med lägen Light/Dark → theme.light / theme.dark
-      const themeKey = c.modes.length > 1 ? slug(mode.name) : slug(c.name.replace(/^theme\s*/i, '') || mode.name);
+      const themeKey = c.modes.length > 1 ? slug(mode.name) : slug(name.replace(/^theme\s*/i, '') || mode.name);
       for (const id of c.variableIds) {
         const v = vars[id];
         const token = { $type: typeOf(v), $value: toValue(v, v.valuesByMode[mode.modeId]) };
@@ -61,7 +73,9 @@ async function exportTokens() {
 
   // --- Textstilar: "Mobile/Heading/H1" → typography["heading-h1"].mobile ---------
   for (const s of await figma.getLocalTextStylesAsync()) {
-    const [bp, ...rest] = s.name.split('/');
+    const styleName = ownStyle(s.name);
+    if (!styleName) continue;
+    const [bp, ...rest] = styleName.split('/');
     const name = rest.map(slug).join('-');
     const lh = s.lineHeight;
     const ls = s.letterSpacing;
@@ -80,7 +94,9 @@ async function exportTokens() {
 
   // --- Skuggstilar: "shadow/sm" → shadow.sm ------------------------------------
   for (const s of await figma.getLocalEffectStylesAsync()) {
-    const parts = s.name.split('/');
+    const styleName = ownStyle(s.name);
+    if (!styleName) continue;
+    const parts = styleName.split('/');
     const layers = s.effects
       .filter((e) => e.type === 'DROP_SHADOW' && e.visible !== false)
       .map((e) => ({

@@ -23,7 +23,7 @@
 }
 
 /// Råfärg ur paletten. Använd helst semantiska CSS-variabler i komponenter.
-/// @example palette('blue', 500)
+/// @example palette('brand', 500)
 @function palette($name, $shade: 500) {
   $scale: _get($colors, $name, 'Färg');
   @return _get($scale, $shade, 'Nyans för #{$name}');

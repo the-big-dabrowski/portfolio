@@ -4,11 +4,10 @@
 @use '../abstracts' as *;
 
 .hero {
-  padding-block: space(8) space(8);
+  padding-block: space(8);
   background:
-    radial-gradient(circle at 10% 20%, color-mix(in srgb, var(--color-accent-green) 12%, transparent), transparent 40%),
-    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--color-accent-blue) 12%, transparent), transparent 45%),
-    radial-gradient(circle at 60% 100%, color-mix(in srgb, var(--color-accent-red) 8%, transparent), transparent 40%);
+    radial-gradient(circle at 85% 0%, color-mix(in srgb, var(--color-accent) 14%, transparent), transparent 45%),
+    radial-gradient(circle at 0% 100%, color-mix(in srgb, var(--color-accent) 8%, transparent), transparent 40%);
 
   @include mq('md') {
     padding-block: space(10) space(9);
@@ -16,7 +15,7 @@
 
   &__eyebrow {
     margin-block-end: space(3);
-    color: var(--color-accent-green-text);
+    color: var(--color-accent-text);
     @include text-style('label-eyebrow');
   }
 
@@ -40,4 +39,28 @@
       flex-wrap: wrap;
     }
   }
+}
+
+// Om mig: rubrik ovanför texten på mobil, bredvid från lg.
+.about {
+  display: grid;
+  gap: space(5);
+
+  @include mq('lg') {
+    grid-template-columns: 1fr 2fr;
+    gap: space(8);
+  }
+
+  &__body {
+    display: grid;
+    gap: space(4);
+    color: var(--color-text-muted);
+    @include text-style('body-large');
+  }
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(3);
 }

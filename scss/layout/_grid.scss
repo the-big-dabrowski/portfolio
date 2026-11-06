@@ -1,5 +1,5 @@
 // =============================================================================
-// Grid – en kolumn på mobil, fler när utrymmet finns
+// Grid – en kolumn på mobil, två när utrymmet finns
 // =============================================================================
 @use '../abstracts' as *;
 
@@ -7,15 +7,11 @@
   display: grid;
   gap: space(5);
 
-  &--cards {
+  &--projects {
     grid-template-columns: 1fr;
 
     @include mq('md') {
       grid-template-columns: repeat(2, 1fr);
-    }
-
-    @include mq('lg') {
-      grid-template-columns: repeat(3, 1fr);
       gap: space(6);
     }
   }

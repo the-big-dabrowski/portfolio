@@ -1,5 +1,12 @@
 # portfolio
-Portfolio that aims at showcasing my skills in mainly frontend development but also UX design.
+Landningssida för mina projekt inom frontend och UX. Varje projekt får ett kort med bild,
+beskrivning, tekniker och länk. Första projektet är Hissläget.
+
+## Lägg till ett projekt
+
+1. Lägg projektets bild i `resources/projects/`.
+2. Kopiera ett `<li class="grid__item">` med en `project-card` i `index.html` och byt
+   bild, titel, text, taggar och länk.
 
 ## Kom igång
 
@@ -13,8 +20,12 @@ SCSS-filerna ligger i `scss/` och följer 7-1-mönstret med BEM-namngivning.
 
 ## Design tokens från Figma
 
-Figma ([Frontend → portfolio](https://www.figma.com/design/OyHcWR2OqbFhKriD3fOpIv/Frontend?node-id=252-28)) är källan för
+Figma ([Frontend → Portfolio (landningssida)](https://www.figma.com/design/OyHcWR2OqbFhKriD3fOpIv/Frontend?node-id=318-28)) är källan för
 palett, avstånd, radier, brytpunkter, temafärger (ljust/mörkt), textstilar och skuggor.
+
+Figma-filen delas med Hissläget. Portfolions variabler och stilar har därför prefixet
+`Portfolio` (samlingarna *Portfolio Primitives*, *Portfolio Theme Light* och
+*Portfolio Theme Dark*, stilarna `Portfolio/…`). Exporten läser bara dem.
 
 ```
 Figma  →  design-tokens/figma-tokens.json  →  scss/abstracts/_figma-tokens.scss
@@ -36,8 +47,8 @@ z-index, animationer) ligger i `scss/abstracts/_tokens.scss`.
 
 | Figma | SCSS |
 | --- | --- |
-| Variabler `color/<färg>/<nyans>` i *Primitives* | `$colors`, `palette('blue', 500)` |
+| Variabler `color/<färg>/<nyans>` i *Portfolio Primitives* | `$colors`, `palette('brand', 500)` |
 | `space/*`, `radius/*`, `layout/*` | `$spacing`, `$radii`, `$breakpoints`, `$container-max-width` |
-| Samlingarna *Theme Light* / *Theme Dark* | `$theme-light` / `$theme-dark` → `--color-*` |
-| Textstilar `Mobile/<Grupp>/<Namn>` + `Desktop/…` | `@include text-style('grupp-namn')` |
-| Effektstilar `shadow/*` | `shadow('sm')` |
+| Samlingarna *Portfolio Theme Light* / *Portfolio Theme Dark* | `$theme-light` / `$theme-dark` → `--color-*` |
+| Textstilar `Portfolio/Mobile/<Grupp>/<Namn>` + `Portfolio/Desktop/…` | `@include text-style('grupp-namn')` |
+| Effektstilar `Portfolio/shadow/*` | `shadow('sm')` |

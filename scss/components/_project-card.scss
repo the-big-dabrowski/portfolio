@@ -1,0 +1,108 @@
+// =============================================================================
+// Project card – ett projekt med bild, text, taggar och länk
+// Hela kortet blir klickbart via länkens ::before.
+// =============================================================================
+@use '../abstracts' as *;
+
+.project-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: radius('lg');
+  box-shadow: shadow('sm');
+  @include transition(box-shadow, transform, border-color);
+
+  &:focus-within,
+  &:hover {
+    box-shadow: shadow('lg');
+    border-color: var(--color-accent);
+  }
+
+  @include hover {
+    transform: translateY(-2px);
+  }
+
+  &__media {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    padding: space(6) space(7);
+    background-color: var(--color-surface-alt);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  // Bilden fyller ytan men behåller sina proportioner.
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: space(3);
+    padding: space(5);
+
+    @include mq('md') {
+      padding: space(6);
+    }
+  }
+
+  &__title {
+    color: var(--color-text);
+  }
+
+  &__text {
+    color: var(--color-text-muted);
+    flex-grow: 1;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(2);
+  }
+
+  &__link {
+    align-self: flex-start;
+    margin-block-start: space(2);
+    color: var(--color-link);
+    font-weight: weight('semibold');
+
+    &::after {
+      content: ' →';
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+    }
+  }
+
+  // Tom plats som visar att fler projekt kommer.
+  &--placeholder {
+    align-items: center;
+    justify-content: center;
+    min-height: rem(240);
+    background-color: transparent;
+    border: 2px dashed var(--color-border);
+    box-shadow: none;
+
+    &:hover {
+      box-shadow: none;
+      border-color: var(--color-border);
+      transform: none;
+    }
+  }
+
+  &__placeholder {
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+}

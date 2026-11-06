@@ -1,5 +1,5 @@
 // =============================================================================
-// Logo
+// Logo – monogram "RD" och namn
 // =============================================================================
 @use '../abstracts' as *;
 
@@ -8,18 +8,25 @@
   align-items: center;
   gap: space(3);
   color: var(--color-text);
-  @include text-style('label-logo');
   text-decoration: none;
+  @include text-style('label-logo');
 
   @include hover {
     color: var(--color-text);
   }
 
-  &__image {
-    width: auto;
-    height: space(6);
+  &__mark {
+    display: inline-grid;
+    place-items: center;
+    width: rem(36);
+    height: rem(36);
+    border-radius: radius('md');
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+    @include text-style('label-monogram');
 
     @include mq('md') {
+      width: rem(40);
       height: rem(40);
     }
   }
