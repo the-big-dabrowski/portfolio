@@ -1,0 +1,74 @@
+// =============================================================================
+// Funktioner – säkra uppslag i token-maps
+// Ger ett tydligt kompileringsfel om en token inte finns.
+// =============================================================================
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:list';
+@use 'figma-tokens' as *;
+@use 'tokens' as *;
+
+/// Hämtar ett värde ur en map, eller kastar fel om nyckeln saknas.
+@function _get($map, $key, $name) {
+  @if not map.has-key($map, $key) {
+    @error '#{$name} `#{$key}` finns inte. Tillgängliga: #{map.keys($map)}';
+  }
+  @return map.get($map, $key);
+}
+
+/// Konverterar px till rem.
+/// @example rem(24) => 1.5rem
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+/// Råfärg ur paletten. Använd helst semantiska CSS-variabler i komponenter.
+/// @example palette('blue', 500)
+@function palette($name, $shade: 500) {
+  $scale: _get($colors, $name, 'Färg');
+  @return _get($scale, $shade, 'Nyans för #{$name}');
+}
+
+/// @example space(4) => 1rem
+@function space($key) {
+  @return _get($spacing, $key, 'Avstånd');
+}
+
+@function radius($key) {
+  @return _get($radii, $key, 'Radie');
+}
+
+@function shadow($key) {
+  @return _get($shadows, $key, 'Skugga');
+}
+
+@function duration($key) {
+  @return _get($durations, $key, 'Duration');
+}
+
+@function z($key) {
+  @return _get($z-index, $key, 'Z-index');
+}
+
+@function weight($key) {
+  @return _get($font-weights, $key, 'Fontvikt');
+}
+
+@function leading($key) {
+  @return _get($line-heights, $key, 'Radhöjd');
+}
+
+/// Flytande storlek mellan två värden, mellan viewport 20rem och 80rem.
+@function fluid($min, $max, $min-vw: 20rem, $max-vw: 80rem) {
+  @if $min == $max {
+    @return $min;
+  }
+  $slope: math.div($max - $min, $max-vw - $min-vw);
+  $intercept: $min - $slope * $min-vw;
+  @return clamp(#{$min}, #{$intercept} + #{$slope * 100}vw, #{$max});
+}
+
+/// Hämtar en textstil (från Figma) som map.
+@function text-style-map($name) {
+  @return _get($text-styles, $name, 'Textstil');
+}

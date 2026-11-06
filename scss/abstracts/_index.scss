@@ -1,0 +1,5 @@
+// Abstracts: genererar ingen CSS – bara variabler, funktioner och mixins.
+@forward 'figma-tokens';
+@forward 'tokens';
+@forward 'functions';
+@forward 'mixins';

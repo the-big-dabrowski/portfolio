@@ -1,0 +1,18 @@
+// =============================================================================
+// main.scss – samlingsfil enligt 7-1-mönstret
+// Ordningen spelar roll: från generellt till specifikt.
+//
+//   1. abstracts/   – tokens, funktioner, mixins (ingen CSS-output)
+//   2. vendors/     – tredjeparts-CSS och reset
+//   3. base/        – grundstilar för element
+//   4. layout/      – header, footer, container, grid
+//   5. components/  – återanvändbara BEM-block
+//   6. pages/       – sidspecifika stilar
+//   7. themes/      – teman (t.ex. mörkt läge)
+// =============================================================================
+@use 'vendors';
+@use 'base';
+@use 'layout';
+@use 'components';
+@use 'pages';
+@use 'themes';

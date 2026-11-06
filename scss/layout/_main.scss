@@ -1,0 +1,35 @@
+// =============================================================================
+// Huvudinnehåll och sektioner
+// =============================================================================
+@use '../abstracts' as *;
+
+.site-main {
+  &:focus {
+    outline: none;
+  }
+}
+
+.section {
+  padding-block: space(8);
+
+  @include mq('md') {
+    padding-block: space(9);
+  }
+
+  &--alt {
+    background-color: var(--color-surface-alt);
+  }
+
+  &__header {
+    margin-block-end: space(6);
+  }
+
+  &__title {
+    margin-block-end: space(3);
+  }
+
+  &__lead {
+    color: var(--color-text-muted);
+    @include text-style('body-large');
+  }
+}

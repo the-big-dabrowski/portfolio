@@ -1,0 +1,26 @@
+// =============================================================================
+// CSS custom properties – semantiska tokens för runtime och teman
+// Komponenter använder dessa (var(--color-…)) så att teman kan byta färger.
+// =============================================================================
+@use 'sass:map';
+@use '../abstracts' as *;
+
+:root {
+  // Semantiska färger från Figma (Theme Light) → --color-bg, --color-text …
+  @each $name, $value in $theme-light {
+    --color-#{$name}: #{$value};
+  }
+
+  // Typografi
+  --font-family-base: #{$font-family-base};
+  --font-family-heading: #{$font-family-heading};
+
+  // Layout
+  --header-height: #{space(8)};
+  --container-max-width: #{$container-max-width};
+  --container-padding: #{map.get($container-padding, 'base')};
+
+  @include mq('md') {
+    --container-padding: #{map.get($container-padding, 'md')};
+  }
+}

@@ -1,0 +1,30 @@
+// =============================================================================
+// Grid – en kolumn på mobil, fler när utrymmet finns
+// =============================================================================
+@use '../abstracts' as *;
+
+.grid {
+  display: grid;
+  gap: space(5);
+
+  &--cards {
+    grid-template-columns: 1fr;
+
+    @include mq('md') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mq('lg') {
+      grid-template-columns: repeat(3, 1fr);
+      gap: space(6);
+    }
+  }
+
+  &__item {
+    display: flex;
+
+    > * {
+      flex: 1;
+    }
+  }
+}

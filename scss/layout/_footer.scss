@@ -1,0 +1,42 @@
+// =============================================================================
+// Site footer
+// =============================================================================
+@use '../abstracts' as *;
+
+.site-footer {
+  background-color: palette('neutral', 900);
+  color: palette('neutral', 200);
+  padding-block: space(6);
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(
+      90deg,
+      var(--color-accent-green) 0 33.33%,
+      var(--color-accent-red) 33.33% 66.66%,
+      var(--color-accent-blue) 66.66% 100%
+    )
+    1;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: space(3);
+
+    @include mq('md') {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    color: palette('neutral', 0);
+
+    @include hover {
+      color: palette('blue', 300);
+    }
+  }
+
+  &__copy {
+    color: palette('neutral', 300);
+  }
+}

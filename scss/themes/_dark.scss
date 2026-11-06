@@ -1,0 +1,24 @@
+// =============================================================================
+// Mörkt tema
+// Färgerna kommer från Figma (Theme Dark) via _figma-tokens.scss.
+// Följer systemets inställning, kan tvingas med data-theme="dark|light" på <html>.
+// =============================================================================
+@use '../abstracts' as *;
+
+@mixin dark-tokens {
+  color-scheme: dark;
+
+  @each $name, $value in $theme-dark {
+    --color-#{$name}: #{$value};
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-tokens;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-tokens;
+}

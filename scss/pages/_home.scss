@@ -1,0 +1,43 @@
+// =============================================================================
+// Startsidan
+// =============================================================================
+@use '../abstracts' as *;
+
+.hero {
+  padding-block: space(8) space(8);
+  background:
+    radial-gradient(circle at 10% 20%, color-mix(in srgb, var(--color-accent-green) 12%, transparent), transparent 40%),
+    radial-gradient(circle at 90% 10%, color-mix(in srgb, var(--color-accent-blue) 12%, transparent), transparent 45%),
+    radial-gradient(circle at 60% 100%, color-mix(in srgb, var(--color-accent-red) 8%, transparent), transparent 40%);
+
+  @include mq('md') {
+    padding-block: space(10) space(9);
+  }
+
+  &__eyebrow {
+    margin-block-end: space(3);
+    color: var(--color-accent-green-text);
+    @include text-style('label-eyebrow');
+  }
+
+  &__title {
+    margin-block-end: space(4);
+  }
+
+  &__lead {
+    margin-block-end: space(6);
+    color: var(--color-text-muted);
+    @include text-style('body-lead');
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: space(3);
+
+    @include mq('sm') {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+}

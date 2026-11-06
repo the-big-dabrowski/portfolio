@@ -1,0 +1,144 @@
+// =============================================================================
+// GENERERAD FIL – redigera inte för hand.
+// Källa: Figma (fil OyHcWR2OqbFhKriD3fOpIv), exporterad 2026-11-06T10:50:49.610Z.
+// Ändra i Figma, exportera till design-tokens/figma-tokens.json och kör `npm run tokens`.
+// =============================================================================
+
+// Palett (Figma: Primitives → color/*)
+$colors: (
+  'green': (
+    100: #e6f7ed,
+    300: #4dd185,
+    500: #01b34f,
+    700: #00803a,
+    900: #00451f,
+  ),
+  'blue': (
+    100: #e6f1fd,
+    300: #5aa6f5,
+    500: #0173ea,
+    700: #0057b3,
+    900: #002f61,
+  ),
+  'red': (
+    100: #fee7e9,
+    300: #fb6b78,
+    500: #f81227,
+    700: #c4071a,
+    900: #6b030e,
+  ),
+  'neutral': (
+    0: #ffffff,
+    50: #f7f8fa,
+    100: #eef0f3,
+    200: #dde1e7,
+    300: #c3c9d2,
+    500: #6b7380,
+    700: #3a404a,
+    800: #23272e,
+    900: #15181c,
+    1000: #0b0c0e,
+  ),
+);
+
+// Avstånd (Figma: Primitives → space/*)
+$spacing: (
+  0: 0, // 0px
+  1: 0.25rem, // 4px
+  2: 0.5rem, // 8px
+  3: 0.75rem, // 12px
+  4: 1rem, // 16px
+  5: 1.5rem, // 24px
+  6: 2rem, // 32px
+  7: 3rem, // 48px
+  8: 4rem, // 64px
+  9: 6rem, // 96px
+  10: 8rem, // 128px
+);
+
+// Hörnradier (Figma: Primitives → radius/*)
+$radii: (
+  'sm': 0.25rem, // 4px
+  'md': 0.5rem, // 8px
+  'lg': 1rem, // 16px
+  'pill': 999px, // 999px
+);
+
+// Brytpunkter, mobile first (Figma: Primitives → layout/*)
+$breakpoints: (
+  'sm': 36em, // 576px
+  'md': 48em, // 768px
+  'lg': 64em, // 1024px
+  'xl': 80em, // 1280px
+);
+
+$container-max-width: 72rem; // 1152px
+
+// Semantiska färger, tema "light" → CSS-variabler --color-*
+$theme-light: (
+  'bg': #ffffff, // neutral/0
+  'surface': #ffffff, // neutral/0
+  'surface-alt': #f7f8fa, // neutral/50
+  'border': #dde1e7, // neutral/200
+  'text': #15181c, // neutral/900
+  'text-muted': #6b7380, // neutral/500
+  'text-inverse': #ffffff, // neutral/0
+  'primary': #0173ea, // blue/500
+  'primary-hover': #0057b3, // blue/700
+  'primary-contrast': #ffffff, // neutral/0
+  'link': #0057b3, // blue/700
+  'link-hover': #002f61, // blue/900
+  'focus': #0173ea, // blue/500
+  'accent-green': #01b34f, // green/500
+  'accent-blue': #0173ea, // blue/500
+  'accent-red': #f81227, // red/500
+  'accent-green-text': #00803a, // green/700
+  'accent-blue-text': #0057b3, // blue/700
+  'accent-red-text': #c4071a, // red/700
+);
+
+// Semantiska färger, tema "dark" → CSS-variabler --color-*
+$theme-dark: (
+  'bg': #0b0c0e, // neutral/1000
+  'surface': #15181c, // neutral/900
+  'surface-alt': #23272e, // neutral/800
+  'border': #3a404a, // neutral/700
+  'text': #f7f8fa, // neutral/50
+  'text-muted': #c3c9d2, // neutral/300
+  'text-inverse': #15181c, // neutral/900
+  'primary': #5aa6f5, // blue/300
+  'primary-hover': #e6f1fd, // blue/100
+  'primary-contrast': #0b0c0e, // neutral/1000
+  'link': #5aa6f5, // blue/300
+  'link-hover': #e6f1fd, // blue/100
+  'focus': #5aa6f5, // blue/300
+  'accent-green': #01b34f, // green/500
+  'accent-blue': #0173ea, // blue/500
+  'accent-red': #f81227, // red/500
+  'accent-green-text': #4dd185, // green/300
+  'accent-blue-text': #5aa6f5, // blue/300
+  'accent-red-text': #fb6b78, // red/300
+);
+
+// Textstilar (Figma: Mobile/* och Desktop/*). Används med @include text-style('namn').
+// Typsnittet styrs av $font-family-* i _tokens.scss, inte av Figma.
+$text-styles: (
+  'heading-h1': ('mobile': 2.25rem, 'desktop': 3.75rem, 'weight': 700, 'line-height': 1.15, 'letter-spacing': 0, 'text-case': none),
+  'heading-h2': ('mobile': 1.875rem, 'desktop': 2.75rem, 'weight': 700, 'line-height': 1.15, 'letter-spacing': 0, 'text-case': none),
+  'heading-h3': ('mobile': 1.25rem, 'desktop': 1.5rem, 'weight': 700, 'line-height': 1.3, 'letter-spacing': 0, 'text-case': none),
+  'body-lead': ('mobile': 1.25rem, 'desktop': 1.5rem, 'weight': 400, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+  'body-large': ('mobile': 1.125rem, 'desktop': 1.25rem, 'weight': 400, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+  'body-base': ('mobile': 1rem, 'desktop': 1.125rem, 'weight': 400, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+  'body-small': ('mobile': 0.875rem, 'desktop': 0.9375rem, 'weight': 400, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+  'label-eyebrow': ('mobile': 0.875rem, 'desktop': 0.9375rem, 'weight': 700, 'line-height': 1.6, 'letter-spacing': 0.08em, 'text-case': uppercase),
+  'label-button': ('mobile': 1rem, 'desktop': 1.125rem, 'weight': 600, 'line-height': 1, 'letter-spacing': 0, 'text-case': none),
+  'label-nav': ('mobile': 1rem, 'desktop': 1.125rem, 'weight': 500, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+  'label-logo': ('mobile': 1rem, 'desktop': 1.125rem, 'weight': 700, 'line-height': 1.6, 'letter-spacing': 0, 'text-case': none),
+);
+
+// Skuggor (Figma: effektstilar shadow/*)
+$shadows: (
+  'sm': 0 1px 2px rgb(0 0 0 / 0.06),
+  'md': 0 4px 12px rgb(0 0 0 / 0.08),
+  'lg': 0 12px 32px rgb(0 0 0 / 0.12),
+);

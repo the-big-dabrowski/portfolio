@@ -1,0 +1,16 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio för Rashed Dabrowski – frontend och UX.",
+  "scripts": {
+    "tokens": "node scripts/tokens-from-figma.mjs",
+    "tokens:check": "node scripts/tokens-from-figma.mjs --check",
+    "build": "npm run tokens:check && sass scss/main.scss css/main.css --style=compressed --no-source-map",
+    "dev": "sass scss/main.scss css/main.css --watch",
+    "figma-plugin:build": "mkdir -p figma-plugin/dist && cat figma-plugin/export-tokens.js figma-plugin/code.js > figma-plugin/dist/code.js"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}
