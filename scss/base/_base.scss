@@ -1,0 +1,51 @@
+// =============================================================================
+// Grundstilar för HTML-element
+// =============================================================================
+@use '../abstracts' as *;
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  @include text-style('body-base');
+}
+
+a {
+  color: var(--color-link);
+  text-underline-offset: 0.2em;
+  @include transition(color);
+
+  @include hover {
+    color: var(--color-link-hover);
+  }
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+// Respektera användare som vill ha mindre rörelse.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,9 @@
+// =============================================================================
+// Container – centrerar innehåll med max-bredd och sidmarginal
+// =============================================================================
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max-width) + var(--container-padding) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}

@@ -1,0 +1,72 @@
+// =============================================================================
+// Mixins
+// =============================================================================
+@use 'sass:map';
+@use 'sass:list';
+@use 'figma-tokens' as *;
+@use 'tokens' as *;
+@use 'functions' as *;
+
+/// Mobile first media query. Skriv basstilar för mobil, lägg till uppåt.
+/// @example @include mq('md') { ... }
+@mixin mq($breakpoint) {
+  @if not map.has-key($breakpoints, $breakpoint) {
+    @error 'Brytpunkt `#{$breakpoint}` finns inte. Tillgängliga: #{map.keys($breakpoints)}';
+  }
+  @media (min-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+/// Textstil från Figma: flytande storlek från mobil till desktop, vikt,
+/// radhöjd, spärrning och versaler.
+/// @example @include text-style('heading-h1');
+@mixin text-style($name) {
+  $style: text-style-map($name);
+  font-size: fluid(map.get($style, 'mobile'), map.get($style, 'desktop'));
+  font-weight: map.get($style, 'weight');
+  line-height: map.get($style, 'line-height');
+  @if map.get($style, 'letter-spacing') != 0 {
+    letter-spacing: map.get($style, 'letter-spacing');
+  }
+  @if map.get($style, 'text-case') != none {
+    text-transform: map.get($style, 'text-case');
+  }
+}
+
+/// Synlig fokusmarkering för tangentbordsanvändare.
+@mixin focus-ring($offset: 3px) {
+  outline: 3px solid var(--color-focus);
+  outline-offset: $offset;
+}
+
+/// Döljer visuellt men behåller för skärmläsare.
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/// Mjuk övergång som respekterar prefers-reduced-motion (se base/_base.scss).
+@mixin transition($props...) {
+  $list: ();
+  @each $prop in $props {
+    $list: list.append($list, $prop duration('base') $easing-standard, comma);
+  }
+  transition: $list;
+}
+
+/// Hover endast på enheter som faktiskt kan hovra.
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}

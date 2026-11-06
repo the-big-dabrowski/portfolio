@@ -1,0 +1,39 @@
+// =============================================================================
+// Site header
+// Mobil: logga och meny staplas. Från md: på en rad.
+// =============================================================================
+@use '../abstracts' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: z('header');
+  background-color: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(2) space(4);
+    min-height: var(--header-height);
+    padding-block: space(3);
+
+    @include mq('md') {
+      flex-wrap: nowrap;
+      padding-block: space(2);
+    }
+  }
+
+  &__logo {
+    flex-shrink: 0;
+  }
+
+  &__nav {
+    @include mq('md') {
+      margin-inline-start: auto;
+    }
+  }
+}

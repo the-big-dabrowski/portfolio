@@ -1,0 +1,43 @@
+// =============================================================================
+// Navigation
+// =============================================================================
+@use '../abstracts' as *;
+
+.nav {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(1);
+    list-style: none;
+    padding: 0;
+
+    @include mq('md') {
+      gap: space(2);
+    }
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    // Minst 44px träffyta för touch (WCAG 2.5.5).
+    min-height: rem(44);
+    padding-inline: space(3);
+    border-radius: radius('md');
+    color: var(--color-text);
+    @include text-style('label-nav');
+    text-decoration: none;
+    @include transition(background-color, color);
+
+    @include hover {
+      background-color: var(--color-surface-alt);
+      color: var(--color-link);
+    }
+
+    &--active {
+      color: var(--color-link);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.4em;
+    }
+  }
+}

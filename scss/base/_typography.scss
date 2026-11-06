@@ -1,0 +1,39 @@
+// =============================================================================
+// Typografi
+// =============================================================================
+@use '../abstracts' as *;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-heading);
+  text-wrap: balance;
+}
+
+h1 { @include text-style('heading-h1'); }
+h2 { @include text-style('heading-h2'); }
+h3 { @include text-style('heading-h3'); }
+
+h4,
+h5,
+h6 {
+  @include text-style('body-large');
+  font-weight: weight('bold');
+  line-height: leading('tight');
+}
+
+p {
+  max-width: 65ch;
+  text-wrap: pretty;
+}
+
+small {
+  @include text-style('body-small');
+}
+
+address {
+  font-style: normal;
+}

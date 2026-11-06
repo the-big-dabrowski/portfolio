@@ -1,0 +1,45 @@
+// =============================================================================
+// Button
+// =============================================================================
+@use '../abstracts' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(2);
+  min-height: rem(48);
+  padding: space(3) space(5);
+  border: 2px solid transparent;
+  border-radius: radius('pill');
+  @include text-style('label-button');
+  text-decoration: none;
+  cursor: pointer;
+  @include transition(background-color, border-color, color, transform);
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+
+    @include hover {
+      background-color: var(--color-primary-hover);
+      color: var(--color-primary-contrast);
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    border-color: currentColor;
+    color: var(--color-text);
+
+    @include hover {
+      background-color: var(--color-text);
+      border-color: var(--color-text);
+      color: var(--color-bg);
+    }
+  }
+}

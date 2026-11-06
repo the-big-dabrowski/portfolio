@@ -1,0 +1,35 @@
+// =============================================================================
+// Logo
+// =============================================================================
+@use '../abstracts' as *;
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: space(3);
+  color: var(--color-text);
+  @include text-style('label-logo');
+  text-decoration: none;
+
+  @include hover {
+    color: var(--color-text);
+  }
+
+  &__image {
+    width: auto;
+    height: space(6);
+
+    @include mq('md') {
+      height: rem(40);
+    }
+  }
+
+  &__text {
+    // Namnet döljs visuellt på de minsta skärmarna men finns kvar via aria-label.
+    display: none;
+
+    @include mq('sm') {
+      display: inline;
+    }
+  }
+}
